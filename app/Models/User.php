@@ -14,6 +14,7 @@ use Laravel\Fortify\Contracts\PasskeyUser;
 use Laravel\Fortify\PasskeyAuthenticatable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Enums\Role;
 
 /**
  * @property int $id
@@ -48,6 +49,7 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
             /* @chisel-2fa */
             'two_factor_confirmed_at' => 'datetime',
             /* @end-chisel-2fa */
+            'role' => Role::class,
         ];
     }
 
