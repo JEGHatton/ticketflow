@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import AppLayout from "@/layouts/AppLayout.vue";
 import type { BreadcrumbItem } from "@/types";
-import { index, show } from "@/routes/tickets";
-import { Head, Link, router } from '@inertiajs/vue3';
+import { create, index, show } from "@/routes/tickets";
+import { Head, Link, router } from "@inertiajs/vue3";
+import { Button } from "@/components/ui/button";
 
 type Ticket = {
     id: number;
@@ -35,7 +36,12 @@ const formatStatus = (status: string) => status.replace("_", " ");
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex flex-col gap-6 p-4">
-            <h1 class="text-2xl font-semibold">Tickets</h1>
+            <div class="flex items-center justify-between">
+                <h1 class="text-2xl font-semibold">Tickets</h1>
+                <Button as-child>
+                    <Link :href="create()">New ticket</Link>
+                </Button>
+            </div>
 
             <div
                 v-if="tickets.data.length === 0"
